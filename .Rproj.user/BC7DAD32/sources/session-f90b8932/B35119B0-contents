@@ -34,6 +34,34 @@ head(data)
 
 ## Exploramos las variables
 ```{r}
-summary(data)
+str(data)
 ```
+
+```{r}
+data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`) |> 
+  filter(is.na(`Credit Score`))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
