@@ -12,11 +12,10 @@ library(tidymodels)
 library(tidyverse)
 library(dplyr)
 library(rio)
+library(naniar)
 ```
 
-
 # Importacion de datos
-
 
 ```{r}
 
@@ -24,44 +23,54 @@ data <- import('Mall_Customers_Enhanced.csv')
 
 ```
 
-
 # EDA
 
 ## Visualizamos la data
+
 ```{r}
 head(data)
 ```
 
 ## Exploramos las variables
+
 ```{r}
 str(data)
 ```
 
+## Seleccionamos nuestras variables y nos aseguramos de que no haya datos faltantes
+
+-   Nuestra variable objetivo será "Credit Score"
+-   Nuestras variables predictoras serán: "Annual Income", "Preferred Category" y "Estimated savings"
+
 ```{r}
-data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`) |> 
+data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
   filter(is.na(`Credit Score`))
+```
+
+## Revisamos que tampoco haya datos faltantes en nuetra variable objetivo (**Credit Score**)
+
+```{r}
+data |> filter(is.na(`Credit Score`))
+```
+## Ultima verificacion de datos faltantes
+
+```{r}
+data |> vis_miss()
 ```
 
 
 
+## Exploramos las variables que escogimos
 
+```{r}
 
+data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
+  summarise("Credit Score" = mean(`Credit Score`),
+            "Annual Income" = mean(`Annual Income (k$)`),
+            "Estimated Savings (k$)" = mean(`Estimated Savings (k$)`),
+            "Preferred Category" = mean(`Preferred Category`))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
