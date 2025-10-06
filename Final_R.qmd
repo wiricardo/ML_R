@@ -3,4 +3,37 @@ title: "Final_R"
   subtitle: "ML_Models"
 ---
 
+# Librerias a utilizar
+
+```{r}
+#| message: false
+#| warning: false
+library(tidymodels)
+library(tidyverse)
+library(dplyr)
+library(rio)
+```
+
+
+# Importacion de datos
+
+
+```{r}
+
+data <- import('Mall_Customers_Enhanced.csv')
+
+```
+
+
+# EDA
+
+## Visualizamos la data
+```{r}
+head(data)
+```
+
+## Exploramos las variables
+```{r}
+summary(data)
+```
 
