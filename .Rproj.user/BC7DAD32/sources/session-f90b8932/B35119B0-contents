@@ -70,6 +70,7 @@ data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Esti
             "Estimated Savings (k$)" = mean(`Estimated Savings (k$)`),
             "Preferred Category" = mean(`Preferred Category`))
 
+# se podria omitir preferred category porque es una variable categorica
 ```
 
 
