@@ -388,8 +388,9 @@ collect_metrics(cv_rf)
 fit_rf <- fit(flujo_rf, data = training_data)
 
 rf_test <- augment(fit_rf, new_data = testing_data)
-metric_set(rmse, rsq)(rf_test, truth = `Credit Score`, estimate = .pred)
 
+rf_metrics <- metric_set(rmse, rsq)(rf_test, truth = `Credit Score`, estimate = .pred)
+rf_metrics
 ```
 
 
@@ -426,12 +427,14 @@ saveRDS(rf_plot, file = "rf_plot.rds")
 
 
 
-### Guardado de modelos
+### Guardado de metricas de modelos
 
 Modelos iniciales
 ```{r}
-
-
+saveRDS(m1_metrics, file = "m1_metrics.rds")
+saveRDS(m2_metrics, file = "m2_metrics.rds")
+saveRDS(m3_metrics, file = "m3_metrics.rds")
+saveRDS(rf_metrics, file = "rf_metrics.rds")
 ```
 
 

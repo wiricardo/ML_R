@@ -23,10 +23,19 @@ est_vars <- data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Cate
   as_tibble(rownames = 'Estadístico')
 
 
-# carga de plots
+# carga de plots desempeño de los modelos
 m1_plot <- readRDS(file = "m1_plot.rds")
 m2_plot <- readRDS(file = "m2_plot.rds")
 m3_plot <- readRDS(file = "m3_plot.rds")
+rf_plot <- readRDS(file = "rf_plot.rds")
+
+# carga de metricas
+
+m1_metrics <- readRDS(file = "m1_metrics.rds")
+m2_metrics <- readRDS(file = "m2_metrics.rds")
+m3_metrics <- readRDS(file = "m3_metrics.rds")
+rf_metrics <- readRDS(file = "rf_metrics.rds")
+
 
 
 ```
@@ -94,13 +103,16 @@ La variable objetivo es **Credit Score**
 
 ## Row
 
-Modelo 1
+**Modelo 1**
 
 Usamos solo **Annual Income (k\$)** como predictor
 
-- Los puntos se dispersan bastante alrededor de la línea, especialmente en los valores altos.
+- Existe una relación positiva moderada entre el ingreso anual y la variable objetivo (R² = 0.60).
 
-- El modelo no logra capturar completamente la relación entre ingreso y la variable objetivo.
+- Sin embargo, los errores de predicción son amplios (RMSE ≈ 96), especialmente para valores altos.
+
+- El modelo subestima o sobreestima varios casos, lo que indica que el ingreso anual no explica completamente la variabilidad de la variable dependiente.
+
 
 ```{r}
 
@@ -109,32 +121,73 @@ plotOutput("model_1")
 
 ```
 
-## Row
-
-Modelo 2
-
 ```{r}
-plotOutput("model_2")
+tableOutput("m1_metrics")
 ```
 
 
 ## Row
 
-Modelo 3
+**Modelo 2**
+
+Usamos **Annual Income (k\$)** y **Estimated Savings (k\$)** como predictores
+
+
+- Existe una relación positiva moderada entre el ingreso anual y los ahorros estimados con la variable objetivo (R² = 0.62).
+
+- Los errores de predicción son amplios (RMSE ≈ 93), sobre todo en valores altos del rango.
+
+- El modelo tiende a subestimar o sobreestimar varios casos, lo que sugiere que los ingresos y los ahorros estimados no explican completamente la variabilidad de la variable dependiente.
+
+
+```{r}
+plotOutput("model_2")
+```
+
+```{r}
+tableOutput("m2_metrics")
+```
+
+
+## Row
+
+**Modelo 3**
+
+Usamos **Annual Income (k\$)**, **Estimated Savings (k\$)** y **Preferred Category** (*variable categórica*) como predictores
+
+- La inclusión de la variable categórica Preferred Category mejora el ajuste del modelo (R² = 0.75), lo que indica una relación positiva más fuerte con la variable objetivo.
+
+- El error promedio disminuye (RMSE ≈ 80), de esta forma las predicciones más algo mas precisas que en los modelos anteriores.
+
+- Aunque el patrón general sigue una tendencia lineal, persisten algunos casos subestimados y sobrestimados, especialmente en valores altos.
+
 
 ```{r}
 plotOutput("model_3")
 ```
 
 
+```{r}
+tableOutput("m3_metrics")
+```
 
 
 
 
 # Random Forest
 
+## Row
+
 - Usamos el **Modelo 3** para ser *mejorado*
 
+```{r}
+plotOutput("rf_model")
+```
+
+
+```{r}
+tableOutput("rf_metrics")
+```
 
 
 
@@ -229,6 +282,29 @@ output$model_3 <- renderPlot({
 })
 
 
+output$rf_model <- renderPlot({
+  rf_plot
+})
+
+
+
+# metricas de modelos
+
+output$m1_metrics <- renderTable({
+  m1_metrics
+})
+
+output$m2_metrics <- renderTable({
+  m2_metrics
+})
+
+output$m3_metrics <- renderTable({
+  m3_metrics
+})
+
+output$rf_metrics <- renderTable({
+  rf_metrics
+})
 
 
 
