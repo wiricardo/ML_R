@@ -339,7 +339,7 @@ metric_set(rmse, rsq)(rf_test, truth = `Credit Score`, estimate = .pred)
 
 ```{r}
 
-ggplot(rf_test, aes(x = `Credit Score`, y = .pred)) +
+rf_plot <- ggplot(rf_test, aes(x = `Credit Score`, y = .pred)) +
   geom_point(color = "blue", size = 2) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "black") +
   labs(
@@ -348,9 +348,9 @@ ggplot(rf_test, aes(x = `Credit Score`, y = .pred)) +
     y = "Valor predicho"
   ) +
   theme_minimal()
+
+rf_plot
 ```
-
-
 
 ### Conclusiones
 
