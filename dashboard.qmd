@@ -53,11 +53,6 @@ A partir del dataset ampliado *Mall Customers*, se desarrollaron tres modelos de
 -   **Preferred Category:** tipo de productos o servicios que el cliente prefiere adquirir, clasificado en categorías como *Luxury*, *Budget*, *Fashion* o *Electronics*.
 
 
-```{r}
-#| title: Visualizacion del Data set Mall Custumers
-
-tableOutput("data")
-```
 
 # EDA
 
@@ -66,14 +61,37 @@ tableOutput("data")
 
 plotOutput("nulos")
 
-
-
 ```
-
 
 ```{r}
 
+plotOutput("cat")
+
 ```
+
+## Row
+
+```{r}
+plotOutput("var1")
+```
+
+## Row
+
+```{r}
+plotOutput("var2")
+```
+
+
+
+
+# Data
+
+```{r}
+#| title: Visualizacion del Data set Mall Custumers
+
+tableOutput("data")
+```
+
 
 ```{r}
 #| context: server
@@ -89,6 +107,57 @@ output$data <- renderTable({
 output$nulos <- renderPlot({
    vis_miss(est_vars)
 })
+
+
+# plot de histogramas
+
+output$cat <- renderPlot({
+  est_vars |> 
+  ggplot(aes(x = `Preferred Category`)) +
+  geom_bar(fill = "steelblue") +
+  labs(
+    title = "Distribución de Categorías Preferidas",
+    x = "Categoría Preferida",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+})
+
+# plot de dispersion 1
+
+output$var1 <- renderPlot({
+  est_vars |> 
+  ggplot(aes(x = `Annual Income (k$)`, 
+             y = `Estimated Savings (k$)`)) +
+  geom_point(color = "steelblue", size = 3, alpha = 0.7) +
+  labs(
+    title = "Relación entre Ingreso Anual y Ahorros Estimados",
+    x = "Ingreso Anual (k$)",
+    y = "Ahorros Estimados (k$)"
+  ) +
+  theme_minimal()
+
+})
+
+# plot de dispersion 2
+
+
+output$var2 <- renderPlot({
+  est_vars |> 
+  ggplot(aes(x = `Annual Income (k$)`, 
+             y = `Estimated Savings (k$)`,
+             size = `Credit Score`)) +
+  geom_point(color = "darkorange", alpha = 0.7) +
+  labs(
+    title = "Ingreso vs Ahorros (Tamaño = Credit Score)",
+    x = "Ingreso Anual (k$)",
+    y = "Ahorros Estimados (k$)",
+    size = "Credit Score"
+  ) +
+  theme_minimal()
+
+})
+
 
 
 
