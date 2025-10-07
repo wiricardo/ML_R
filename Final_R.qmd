@@ -306,6 +306,7 @@ m2_plot
 
 # Conclusiones Regresion Lineal
 
+-   El modelo 3 fue el que mejor desempeño tuvo, sim embargo, no los suficiente como para lograr una buena prediccion
 -   Se utilizó un modelo de regresión lineal por su simplicidad e interpretabilidad. Sin embargo, su desempeño fue limitado debido a la colinealidad entre predictores y a la no linealidad en las relaciones con la variable objetivo.
 
 
