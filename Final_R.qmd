@@ -305,3 +305,53 @@ m2_plot
 Conclusiones
 
 -   Se utilizó un modelo de regresión lineal por su simplicidad e interpretabilidad. Sin embargo, su desempeño fue limitado debido a la colinealidad entre predictores y a la no linealidad en las relaciones con la variable objetivo.
+
+# Alternativa
+
+## Ramdom Forest
+
+### Entrenamiento
+
+```{r}
+modelo_rf <- rand_forest(trees = 500, mtry = 5, min_n = 10) |>
+  set_engine("ranger") |>
+  set_mode("regression")
+
+flujo_rf <- workflow() |>
+  add_recipe(receta_3) |>
+  add_model(modelo_rf)
+
+cv_rf <- fit_resamples(flujo_rf, resamples = folds, metrics = metric_set(rmse, rsq))
+collect_metrics(cv_rf)
+
+```
+
+### Testeo
+
+```{r}
+fit_rf <- fit(flujo_rf, data = training_data)
+
+rf_test <- augment(fit_rf, new_data = testing_data)
+metric_set(rmse, rsq)(rf_test, truth = `Credit Score`, estimate = .pred)
+
+```
+
+
+```{r}
+
+ggplot(rf_test, aes(x = `Credit Score`, y = .pred)) +
+  geom_point(color = "blue", size = 2) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "black") +
+  labs(
+    title = "Random Forest: Valores reales vs predichos",
+    x = "Valor real (Credit Score)",
+    y = "Valor predicho"
+  ) +
+  theme_minimal()
+```
+
+
+
+### Conclusiones
+
+-   El modelo de Random Forest alcanzó un mejor rendimiento, con un coeficiente de determinación (R²) de 0.94 y un error cuadrático medio (RMSE) de aproximadamente 40, lo que reduce significativamente el error en comparación con la regresión lineal.
