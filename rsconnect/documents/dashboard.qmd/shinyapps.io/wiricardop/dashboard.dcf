@@ -1,0 +1,14 @@
+name: dashboard
+title: dashboard
+username: wiricardop
+account: wiricardop
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15688693
+bundleId: 11004827
+url: https://wiricardop.shinyapps.io/dashboard/
+version: 1
+quarto_version: 1.7.32
+quarto_engines: knitr
+asMultiple: FALSE
+asStatic: FALSE
