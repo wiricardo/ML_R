@@ -81,6 +81,27 @@ plotOutput("var1")
 plotOutput("var2")
 ```
 
+# Modelos de Regresion Lineal
+
+La variable objetivo es **Credit Score**
+
+## Row
+
+Modelo 1
+
+- Usamos solo **Annual Income (k\$)** como predictor
+
+
+```{r}
+
+
+
+
+```
+
+
+
+# Random Forest
 
 
 
