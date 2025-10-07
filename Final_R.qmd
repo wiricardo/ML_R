@@ -64,11 +64,10 @@ data |> vis_miss()
 
 ```{r}
 
-# se podria omite "preferred category" porque es una variable categorica
-data |> select(`Credit Score`, `Annual Income (k$)`, `Estimated Savings (k$)`) |> 
-  summarise("Credit Score" = mean(`Credit Score`),
-            "Annual Income" = mean(`Annual Income (k$)`),
-            "Estimated Savings (k$)" = mean(`Estimated Savings (k$)`))
+est_vars <- summary(data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
+  as_tibble(rownames = 'Estadístico'))
+
+est_vars
 
 
 ```
