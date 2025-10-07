@@ -68,17 +68,22 @@ ul.task-list li input[type="checkbox"] {
         
       </div>
     </div>
-<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-customer-analytics" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#customer-analytics" data-scrolling="false" href="#customer-analytics" aria-controls="customer-analytics" aria-selected="true"><span class="nav-link-text">Customer Analytics</span></a></li></ul></div></div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-customer-analytics" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#customer-analytics" data-scrolling="false" href="#customer-analytics" aria-controls="customer-analytics" aria-selected="true"><span class="nav-link-text">Customer Analytics</span></a></li><li class="nav-item" role="presentation"><a id="tab-eda" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#eda" data-scrolling="false" href="#eda" aria-controls="eda" aria-selected="false"><span class="nav-link-text">EDA</span></a></li></ul></div></div>
 </nav>
 </header>
 <div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
 
-<hr class="bslib-grid-item html-fill-item">
 <div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div id="customer-analytics" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-customer-analytics">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
+<strong>Objetivos</strong>
+<p>Analizar cómo el ingreso anual, la categoría de preferencia y el ahorro estimado influyen en el puntaje crediticio de los clientes mediante tres modelos de regresión lineal. Se busca identificar qué variables explican mejor las variaciones en el Credit Score y aportar evidencia para la segmentación de clientes en contextos financieros y de consumo.</p>
+<strong>Justificación del dataset</strong>
+<p>El dataset <em>Mall Customers</em> fue elegido por su carácter educativo y su estructura realista, ya que combina variables demográficas, financieras y de comportamiento de compra. Esta diversidad permite desarrollar modelos predictivos más robustos y analizar relaciones significativas entre los hábitos de consumo y el perfil crediticio.</p>
+<strong>Público objetivo</strong>
+<p>El estudio está orientado a analistas de datos, profesionales de marketing y entidades financieras interesadas en comprender los factores que determinan el puntaje crediticio y en diseñar estrategias personalizadas de fidelización o gestión de riesgo.</p>
 <strong>Problemática</strong>
 <ul>
 <li>¿Cómo influyen el ingreso anual, la categoría de preferencia y el ahorro estimado en el puntaje crediticio de los clientes?</li>
@@ -98,9 +103,9 @@ ul.task-list li input[type="checkbox"] {
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Visualizacion del Data set" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Visualizacion del Data set Mall Custumers" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title"><span style="display: inline">
-Visualizacion del Data set
+Visualizacion del Data set Mall Custumers
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container no-overflow-x">
@@ -113,8 +118,26 @@ Visualizacion del Data set
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+</div>
+</div>
+<div id="eda" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-eda">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 30fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="shiny-plot-output html-fill-item html-fill-container" id="nulos" style="width:100%;height:400px;"></div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
 
+</div>
 </div>
 </div>
 </div>
@@ -127,10 +150,13 @@ library(ggthemes)
 library(rio)
 library(shiny)
 library(ggplot2)
+library(naniar)
 
 data <- import('Mall_Customers_Enhanced.csv')
 
-
+## data filtrada
+est_vars <- summary(data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
+  as_tibble(rownames = 'Estadístico'))
 
 </script>
  
@@ -139,6 +165,11 @@ data <- import('Mall_Customers_Enhanced.csv')
 output$data <- renderTable({
   data
 })
+
+output$nulos <- renderPlot({
+  est_vars |> vis_miss()
+})
+
 
 
 </script>
@@ -185,12 +216,12 @@ ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["htmltools-fill"]},{"type":"character","attributes":{},"value":["0.5.8.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["fill"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["fill.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["htmltools"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.5.8.1"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69]}},"value":[{"type":"character","attributes":{},"value":["base","cli","compiler","data.table","datasets","digest","dplyr","evaluate","farver","fastmap","forcats","generics","ggplot2","ggthemes","glue","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","httr","jsonlite","knitr","later","lazyeval","lifecycle","lubridate","magrittr","methods","mime","pillar","pkgconfig","plotly","promises","purrr","R.methodsS3","R.oo","R.utils","R6","RColorBrewer","Rcpp","readr","rio","rlang","rmarkdown","rstudioapi","S7","scales","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","utils","vctrs","viridisLite","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["4.5.1","3.6.5","4.5.1","1.17.8","4.5.1","0.6.37","1.1.4","1.0.4","2.1.2","1.2.0","1.0.0","0.1.4","4.0.0","5.1.0","1.8.0","4.5.1","4.5.1","4.5.1","0.3.6","1.1.3","0.5.8.1","1.6.4","1.6.16","1.4.7","2.0.0","1.50","1.4.3","0.2.2","1.0.4","1.9.4","2.0.3","4.5.1","0.13","1.11.0","2.0.3","4.11.0","1.3.3","1.1.0","1.8.2","1.27.1","2.13.0","2.6.1","1.1-3","1.1.0","2.1.5","1.2.3","1.1.6","2.29","0.17.1","0.2.0","1.4.0","1.11.1","4.5.1","1.8.7","1.5.1","3.3.0","1.3.1","1.2.1","2.0.0","0.3.0","4.5.1","0.5.0","4.5.1","0.6.5","0.4.2","3.0.2","0.53","1.8-4","2.3.10"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71]}},"value":[{"type":"character","attributes":{},"value":["base","cli","compiler","data.table","datasets","digest","dplyr","evaluate","farver","fastmap","forcats","generics","ggplot2","ggthemes","glue","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","httr","jsonlite","knitr","later","lazyeval","lifecycle","lubridate","magrittr","methods","mime","naniar","pillar","pkgconfig","plotly","promises","purrr","R.methodsS3","R.oo","R.utils","R6","RColorBrewer","Rcpp","readr","rio","rlang","rmarkdown","rstudioapi","S7","scales","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","utils","vctrs","viridisLite","visdat","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["4.5.1","3.6.5","4.5.1","1.17.8","4.5.1","0.6.37","1.1.4","1.0.4","2.1.2","1.2.0","1.0.0","0.1.4","4.0.0","5.1.0","1.8.0","4.5.1","4.5.1","4.5.1","0.3.6","1.1.3","0.5.8.1","1.6.4","1.6.16","1.4.7","2.0.0","1.50","1.4.3","0.2.2","1.0.4","1.9.4","2.0.3","4.5.1","0.13","1.1.0","1.11.0","2.0.3","4.11.0","1.3.3","1.1.0","1.8.2","1.27.1","2.13.0","2.6.1","1.1-3","1.1.0","2.1.5","1.2.3","1.1.6","2.29","0.17.1","0.2.0","1.4.0","1.11.1","4.5.1","1.8.7","1.5.1","3.3.0","1.3.1","1.2.1","2.0.0","0.3.0","4.5.1","0.5.0","4.5.1","0.6.5","0.4.2","0.6.0","3.0.2","0.53","1.8-4","2.3.10"]}]}]}
 </script>
 <!--/html_preserve-->
 

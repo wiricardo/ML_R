@@ -14,14 +14,30 @@ library(ggthemes)
 library(rio)
 library(shiny)
 library(ggplot2)
+library(naniar)
 
 data <- import('Mall_Customers_Enhanced.csv')
 
-
+## data filtrada
+est_vars <- summary(data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
+  as_tibble(rownames = 'Estadístico'))
 
 ```
 
 # Customer Analytics
+
+**Objetivos**
+
+Analizar cómo el ingreso anual, la categoría de preferencia y el ahorro estimado influyen en el puntaje crediticio de los clientes mediante tres modelos de regresión lineal. Se busca identificar qué variables explican mejor las variaciones en el Credit Score y aportar evidencia para la segmentación de clientes en contextos financieros y de consumo.
+
+**Justificación del dataset**
+
+El dataset *Mall Customers* fue elegido por su carácter educativo y su estructura realista, ya que combina variables demográficas, financieras y de comportamiento de compra. Esta diversidad permite desarrollar modelos predictivos más robustos y analizar relaciones significativas entre los hábitos de consumo y el perfil crediticio.
+
+**Público objetivo**
+
+El estudio está orientado a analistas de datos, profesionales de marketing y entidades financieras interesadas en comprender los factores que determinan el puntaje crediticio y en diseñar estrategias personalizadas de fidelización o gestión de riesgo.
+
 
 **Problemática**
 
@@ -36,11 +52,24 @@ A partir del dataset ampliado *Mall Customers*, se desarrollaron tres modelos de
 -   **Estimated Savings (k\$):** monto estimado de ahorro calculado a partir de los ingresos y patrones de gasto.
 -   **Preferred Category:** tipo de productos o servicios que el cliente prefiere adquirir, clasificado en categorías como *Luxury*, *Budget*, *Fashion* o *Electronics*.
 
+
 ```{r}
-#| title: Visualizacion del Data set
+#| title: Visualizacion del Data set Mall Custumers
 
 tableOutput("data")
 ```
+
+# EDA
+
+## Row {height=30%}
+```{r}
+
+plotOutput("nulos")
+
+
+
+```
+
 
 ```{r}
 
@@ -53,6 +82,11 @@ tableOutput("data")
 output$data <- renderTable({
   data
 })
+
+output$nulos <- renderPlot({
+  est_vars |> vis_miss()
+})
+
 
 
 ```
