@@ -71,6 +71,14 @@ est_vars
 
 
 ```
+Notamos que podemos normalizar algunas variables y convertir a variables dummy la variable categgeorica
+
+# Preramos la data antes de definir el modelo de regresión
+
+```{r}
+
+```
+
 
 
 
