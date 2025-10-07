@@ -313,7 +313,7 @@ m2_plot
 
 ```{r}
 
-cor_mat <- cor_mat <- data |> 
+cor_mat <- data |> 
   mutate(`Preferred Category` = as.numeric(as.factor(`Preferred Category`))) |> 
   select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
   cor() |> round(2)
@@ -336,6 +336,15 @@ cor_mat_plot <- ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
 cor_mat_plot
 ```
 -  Annual Income y Estimated Savings tienen multicolinealidad alta (0.81), lo que significa información redundante. 
+
+### Verificamos la linealidad de los datos
+
+```{r}
+lin_data <- data |> 
+  mutate(`Preferred Category` = as.numeric(as.factor(`Preferred Category`))) |> 
+  select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`)
+```
+
 
 
 
