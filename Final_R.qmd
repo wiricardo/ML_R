@@ -337,7 +337,7 @@ cor_mat_plot
 ```
 -  Annual Income y Estimated Savings tienen multicolinealidad alta (0.81), lo que significa información redundante. 
 
-### Verificamos la linealidad de los datos
+## Verificamos la linealidad de los datos
 
 ```{r}
 lin_data <- data |> 
@@ -345,11 +345,23 @@ lin_data <- data |>
   select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`)
 ```
 
+### Scatter plot para facilitar la visualizacion
+
+```{r}
+lin_plot <- ggpairs(lin_data)
+lin_plot
+```
+- Credit Score, Annual Income y Estimated Savings muestran relaciones lineales positivas.
+
+- Annual Income y Estimated Savings son las más fuertemente lineales.
+
+- Credit Score también crece linealmente con Annual Income y Estimated Savings, aunque con curvatura en valores altos.
+
+- Preferred Category no presenta linealidad, pues es una variable categórica codificada.
 
 
 
-
-# Alternativa para manejar los 
+# Alternativa a Regresion Lineal
 
 ## Ramdom Forest
 
