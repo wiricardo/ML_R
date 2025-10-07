@@ -22,6 +22,13 @@ data <- import('Mall_Customers_Enhanced.csv')
 est_vars <- data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
   as_tibble(rownames = 'Estadístico')
 
+
+# carga de plots
+m1_plot <- readRDS(file = "m1_plot.rds")
+m2_plot <- readRDS(file = "m2_plot.rds")
+m3_plot <- readRDS(file = "m3_plot.rds")
+
+
 ```
 
 # Customer Analytics
@@ -89,19 +96,46 @@ La variable objetivo es **Credit Score**
 
 Modelo 1
 
-- Usamos solo **Annual Income (k\$)** como predictor
+Usamos solo **Annual Income (k\$)** como predictor
 
+- Los puntos se dispersan bastante alrededor de la línea, especialmente en los valores altos.
+
+- El modelo no logra capturar completamente la relación entre ingreso y la variable objetivo.
 
 ```{r}
 
-
+plotOutput("model_1")
 
 
 ```
 
+## Row
+
+Modelo 2
+
+```{r}
+plotOutput("model_2")
+```
+
+
+## Row
+
+Modelo 3
+
+```{r}
+plotOutput("model_3")
+```
+
+
+
+
 
 
 # Random Forest
+
+- Usamos el **Modelo 3** para ser *mejorado*
+
+
 
 
 
@@ -178,6 +212,23 @@ output$var2 <- renderPlot({
   theme_minimal()
 
 })
+
+
+# plots de modelos
+
+output$model_1 <- renderPlot({
+  m1_plot
+})
+
+output$model_2 <- renderPlot({
+  m2_plot
+})
+
+output$model_3 <- renderPlot({
+  m3_plot
+})
+
+
 
 
 

@@ -411,3 +411,27 @@ rf_plot
 ### Conclusiones
 
 -   El modelo de Random Forest alcanzó un mejor rendimiento, con un coeficiente de determinación (R²) de 0.94 y un error cuadrático medio (RMSE) de aproximadamente 40, lo que reduce significativamente el error en comparación con la regresión lineal.
+
+
+### Guardado de plots
+
+```{r}
+saveRDS(m1_plot, file = "m1_plot.rds")
+saveRDS(m2_plot, file = "m2_plot.rds")
+saveRDS(m3_plot, file = "m3_plot.rds")
+saveRDS(rf_plot, file = "rf_plot.rds")
+
+```
+
+
+
+
+### Guardado de modelos
+
+Modelos iniciales
+```{r}
+
+
+```
+
+
