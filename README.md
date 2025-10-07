@@ -1,4 +1,4 @@
-# ML_R
+# Machine Learning with R
 
 Machine Learning project **by Wiricardo** for credit score prediction using R and Quarto. Compares Linear Regression vs Random Forest models with customer data.
 
