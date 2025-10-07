@@ -178,7 +178,15 @@ tableOutput("m3_metrics")
 
 ## Row
 
-- Usamos el **Modelo 3** para ser *mejorado*
+Usamos el **Modelo 3** para ser *mejorado*
+
+- Al aplicar Random Forest sobre las mismas variables del Modelo 3, el desempeño mejora notablemente (R² = 0.94).
+
+- El error de predicción se reduce considerablemente (RMSE ≈ 40), indicando un ajuste mucho más preciso.
+
+- Los valores predichos se alinean estrechamente con los reales.
+
+- Random Forest maneja mejor la variabilidad y posibles interacciones entre variables, de esta forma tiene mejor desempeño que el modelo lineal.
 
 ```{r}
 plotOutput("rf_model")
