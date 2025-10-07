@@ -14,6 +14,7 @@ library(dplyr)
 library(rio)
 library(naniar)
 library(yardstick)
+library(reshape2)
 ```
 
 # Seed para reproducibilidad
@@ -79,6 +80,7 @@ est_vars
 ```
 
 Notamos que podemos normalizar algunas variables y convertir a variables dummy la variable categgeorica
+
 
 # Prepamos la data antes de definir el modelo de regresión lineal
 
@@ -302,11 +304,43 @@ m3_plot <- m3_test |>
 m2_plot
 ```
 
-Conclusiones
+# Conclusiones Regresion Lineal
 
 -   Se utilizó un modelo de regresión lineal por su simplicidad e interpretabilidad. Sin embargo, su desempeño fue limitado debido a la colinealidad entre predictores y a la no linealidad en las relaciones con la variable objetivo.
 
-# Alternativa
+
+## Revisamos las correlaciones entre variables para identificar posible multicolinealidad
+
+```{r}
+
+cor_mat <- cor_mat <- data |> 
+  mutate(`Preferred Category` = as.numeric(as.factor(`Preferred Category`))) |> 
+  select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
+  cor() |> round(2)
+
+melted_cormat <- melt(cor_mat)
+head(melted_cormat)
+```
+
+### Heatmap para mejor identificación
+```{r}
+cor_mat_plot <- ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
+ geom_tile(color = "white")+
+ scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+   midpoint = 0, limit = c(-1,1), space = "Lab") +
+  theme_minimal()+ 
+ theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+    size = 12, hjust = 1)) +
+  geom_text(aes(Var2, Var1, label = value), color = "black", size = 4)
+
+cor_mat_plot
+```
+-  Annual Income y Estimated Savings tienen multicolinealidad alta (0.81), lo que significa información redundante. 
+
+
+
+
+# Alternativa para manejar los 
 
 ## Ramdom Forest
 
