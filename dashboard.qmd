@@ -15,42 +15,44 @@ library(rio)
 library(shiny)
 library(ggplot2)
 
+data <- import('Mall_Customers_Enhanced.csv')
+
+
 
 ```
 
-# 
+# Customer Analytics
 
+**Problemática**
 
+-   ¿Cómo influyen el ingreso anual, la categoría de preferencia y el ahorro estimado en el puntaje crediticio de los clientes?
 
+A partir del dataset ampliado *Mall Customers*, se desarrollaron tres modelos de regresión lineal para determinar qué factores explican mejor las variaciones en el Credit Score y para analizar los patrones asociados al comportamiento financiero de los consumidores.
 
+**Descripción de las variables**
 
+-   **Credit Score:** indicador numérico que refleja la solvencia financiera del cliente y su comportamiento frente al crédito.
+-   **Annual Income (k\$):** nivel de ingreso anual expresado en miles de dólares, relacionado con la capacidad económica del cliente.
+-   **Estimated Savings (k\$):** monto estimado de ahorro calculado a partir de los ingresos y patrones de gasto.
+-   **Preferred Category:** tipo de productos o servicios que el cliente prefiere adquirir, clasificado en categorías como *Luxury*, *Budget*, *Fashion* o *Electronics*.
 
+```{r}
+#| title: Visualizacion del Data set
 
+tableOutput("data")
+```
 
 ```{r}
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ```{r}
 #| context: server
+
+
+output$data <- renderTable({
+  data
+})
+
 
 ```
