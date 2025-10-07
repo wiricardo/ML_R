@@ -3,7 +3,7 @@
     "path": "~/R_intermedio_quarto/Final/Final_R/Final_R.qmd",
     "project_path": "Final_R.qmd",
     "type": "quarto_markdown",
-    "hash": "2388945843",
+    "hash": "69905213",
     "contents": "",
     "dirty": false,
     "created": 1759759862674.0,
@@ -16,16 +16,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "341:1245",
-        "cursorPosition": "78,0",
-        "scrollLine": "59"
+        "rmdVisualModeLocation": "1557:1771.818115234375",
+        "cursorPosition": "97,93",
+        "scrollLine": "62"
     },
     "folds": "",
-    "lastKnownWriteTime": 1759800237,
+    "lastKnownWriteTime": 1759802231,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1759800237807,
+    "last_content_update": 1759802231678,
     "read_only": false,
     "read_only_alternatives": []
 }

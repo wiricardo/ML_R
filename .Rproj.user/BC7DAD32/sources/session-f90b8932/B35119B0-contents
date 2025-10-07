@@ -52,13 +52,12 @@ data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Esti
 ```{r}
 data |> filter(is.na(`Credit Score`))
 ```
+
 ## Ultima verificacion de datos faltantes
 
 ```{r}
 data |> vis_miss()
 ```
-
-
 
 ## Exploramos las variables que escogimos
 
@@ -71,14 +70,29 @@ est_vars
 
 
 ```
+
 Notamos que podemos normalizar algunas variables y convertir a variables dummy la variable categgeorica
 
-# Preramos la data antes de definir el modelo de regresión
+# Prepamos la data antes de definir el modelo de regresión lineal
+
+## Split de la data
 
 ```{r}
 
+ds_split <- initial_split(data)
+training_data <- training(ds_split)
+testing_data <- testing(ds_split)
 ```
 
+## Procesamiento de los datos
 
+Creamos las *recetas*
 
+-   Receta 1: Usamos solo **Annual Income (k\$)** como predictor
 
+```{r}
+receta_1 <- recipe(`Credit Score` ~ `Annual Income (k$)`, data = training_data) |> 
+  step_normalize(`Annual Income (k$)`)
+```
+
+-   Receta 2: Usamos  **Annual Income (k\$)** y **Estimated Savings (k$)** y como predictores
