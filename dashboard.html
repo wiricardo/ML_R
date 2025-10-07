@@ -155,8 +155,8 @@ library(naniar)
 data <- import('Mall_Customers_Enhanced.csv')
 
 ## data filtrada
-est_vars <- summary(data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
-  as_tibble(rownames = 'Estadístico'))
+est_vars <- data |> select(`Credit Score`, `Annual Income (k$)`, `Preferred Category`, `Estimated Savings (k$)`) |> 
+  as_tibble(rownames = 'Estadístico')
 
 </script>
  
@@ -166,8 +166,11 @@ output$data <- renderTable({
   data
 })
 
+
+
+
 output$nulos <- renderPlot({
-  est_vars |> vis_miss()
+   vis_miss(est_vars)
 })
 
 
