@@ -19,7 +19,7 @@ Dataset: Mall Customers Enhanced
 
 | Model                       | RMSE  | R²   |
 |-----------------------------|-------|------|
-| Linear Regression (Model 3) | \~80 | 0.25 |
+| Linear Regression (Model 3) | \~80 | 0.75 |
 | Random Forest               | \~40  | 0.94 |
 
 Random Forest significantly outperforms linear regression due to multicollinearity between income and savings (correlation: 0.81).
