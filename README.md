@@ -6,7 +6,7 @@ Machine Learning project **by Wiricardo** for credit score prediction using R an
 
 This project predicts **customer credit scores** based on: 
 - Annual Income 
-- Estimated Savings\
+- Estimated Savings
 - Preferred Category (product preference)
 
 Dataset: Mall Customers Enhanced
