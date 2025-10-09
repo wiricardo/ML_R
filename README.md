@@ -13,7 +13,7 @@ Dataset: Mall Customers Enhanced
 
 **Linear Regression (3 variants)** - Model 1: Annual Income only - Model 2: Annual Income + Estimated Savings - Model 3: All features including Preferred Category
 
-**Random Forest** - 500 trees - Better performance handling non-linear relationships
+**Random Forest** - 500 trees, optimized hyperparameters - Better performance handling non-linear relationships
 
 ## Results
 
