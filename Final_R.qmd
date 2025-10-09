@@ -381,11 +381,15 @@ cv_rf <- fit_resamples(flujo_rf, resamples = folds, metrics = metric_set(rmse, r
 collect_metrics(cv_rf)
 
 ```
+```{r}
+fit_rf <- fit(flujo_rf, data = training_data)
+```
+
 
 ### Testeo
 
 ```{r}
-fit_rf <- fit(flujo_rf, data = training_data)
+
 
 rf_test <- augment(fit_rf, new_data = testing_data)
 
