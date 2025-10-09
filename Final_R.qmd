@@ -385,7 +385,6 @@ collect_metrics(cv_rf)
 fit_rf <- fit(flujo_rf, data = training_data)
 ```
 
-
 ### Testeo
 
 ```{r}
