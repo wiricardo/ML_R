@@ -15,6 +15,7 @@ library(rio)
 library(naniar)
 library(yardstick)
 library(reshape2)
+library(GGally)
 ```
 
 # Seed para reproducibilidad
@@ -80,7 +81,6 @@ est_vars
 ```
 
 Notamos que podemos normalizar algunas variables y convertir a variables dummy la variable categgeorica
-
 
 # Prepamos la data antes de definir el modelo de regresión lineal
 
@@ -309,7 +309,6 @@ m2_plot
 -   El modelo 3 fue el que mejor desempeño tuvo, sim embargo, no los suficiente como para lograr una buena prediccion
 -   Se utilizó un modelo de regresión lineal por su simplicidad e interpretabilidad. Sin embargo, su desempeño fue limitado debido a la colinealidad entre predictores y a la no linealidad en las relaciones con la variable objetivo.
 
-
 ## Revisamos las correlaciones entre variables para identificar posible multicolinealidad
 
 ```{r}
@@ -324,6 +323,7 @@ head(melted_cormat)
 ```
 
 ### Heatmap para mejor identificación
+
 ```{r}
 cor_mat_plot <- ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
  geom_tile(color = "white")+
@@ -336,7 +336,8 @@ cor_mat_plot <- ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
 
 cor_mat_plot
 ```
--  Annual Income y Estimated Savings tienen multicolinealidad alta (0.81), lo que significa información redundante. 
+
+-   Annual Income y Estimated Savings tienen multicolinealidad alta (0.81), lo que significa información redundante.
 
 ## Verificamos la linealidad de los datos
 
@@ -352,15 +353,14 @@ lin_data <- data |>
 lin_plot <- ggpairs(lin_data)
 lin_plot
 ```
-- Credit Score, Annual Income y Estimated Savings muestran relaciones lineales positivas.
 
-- Annual Income y Estimated Savings son las más fuertemente lineales.
+-   Credit Score, Annual Income y Estimated Savings muestran relaciones lineales positivas.
 
-- Credit Score también crece linealmente con Annual Income y Estimated Savings, aunque con curvatura en valores altos.
+-   Annual Income y Estimated Savings son las más fuertemente lineales.
 
-- Preferred Category no presenta linealidad, pues es una variable categórica codificada.
+-   Credit Score también crece linealmente con Annual Income y Estimated Savings, aunque con curvatura en valores altos.
 
-
+-   Preferred Category no presenta linealidad, pues es una variable categórica codificada.
 
 # Alternativa a Regresion Lineal
 
@@ -393,7 +393,6 @@ rf_metrics <- metric_set(rmse, rsq)(rf_test, truth = `Credit Score`, estimate = 
 rf_metrics
 ```
 
-
 ```{r}
 
 rf_plot <- ggplot(rf_test, aes(x = `Credit Score`, y = .pred)) +
@@ -413,7 +412,6 @@ rf_plot
 
 -   El modelo de Random Forest alcanzó un mejor rendimiento, con un coeficiente de determinación (R²) de 0.94 y un error cuadrático medio (RMSE) de aproximadamente 40, lo que reduce significativamente el error en comparación con la regresión lineal.
 
-
 ### Guardado de plots
 
 ```{r}
@@ -424,17 +422,13 @@ saveRDS(rf_plot, file = "rf_plot.rds")
 
 ```
 
-
-
-
 ### Guardado de metricas de modelos
 
 Modelos iniciales
+
 ```{r}
 saveRDS(m1_metrics, file = "m1_metrics.rds")
 saveRDS(m2_metrics, file = "m2_metrics.rds")
 saveRDS(m3_metrics, file = "m3_metrics.rds")
 saveRDS(rf_metrics, file = "rf_metrics.rds")
 ```
-
-
